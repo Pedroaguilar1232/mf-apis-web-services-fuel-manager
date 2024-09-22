@@ -30,7 +30,7 @@ namespace mf_apis_web_services_fuel_manager.Controllers
             }
             _context.Veiculos.Add(model);
             await _context.SaveChangesAsync();
-            return CreatedAtAction("GetById", new {id = model.Id, model});
+            return CreatedAtAction("GetById", new { id = model.Id }, model);
         }
 
         [HttpGet("{id}")]
