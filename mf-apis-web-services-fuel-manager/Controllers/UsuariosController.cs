@@ -56,6 +56,11 @@ namespace mf_apis_web_services_fuel_manager.Controllers
                 .FirstOrDefaultAsync(c => c.Id == id);
 
             if (modeloDb == null) return NotFound();
+
+            modeloDb.Nome = model.Nome;
+            modeloDb.Password = BCrypt.Net.BCrypt.HashPassword(model.Password);
+            modeloDb.Perfil = model.Perfil;
+
             _context.Usuarios.Update(model);
             await _context.SaveChangesAsync();
 
